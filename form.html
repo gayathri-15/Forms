@@ -16,32 +16,32 @@
                 <section>
                     <div class="form-field" id="navigation">
                         <form  name="applicationForm" onsubmit="return validateForm()" method="post">
-                          <div class="form-group">
-                            <label for="firstname">First Name</label><p style="display: contents; color: red;">*</p>
+                          <div class="form-group name">
+                            <label for="firstname">First Name :</label><p style="display: contents; color: red;"></p>
                             <input name="firstname" autocomplete="off" type="text" class="form-control" id="firstname">
                             <span id="firstnameError" style="color: red"></span>
                           </div>
-                          <div class="form-group">
-                            <label for="lastname">Last Name</label><p style="display: contents; color: red;">*</p>
+                          <div class="form-group name">
+                            <label for="lastname">Last Name :</label><p style="display: contents; color: red;"></p>
                             <input name="lastname" autocomplete="off" type="text" class="form-control" id="lastname">
                             <span id="lastnameError" style="color: red"></span>
                           </div>
                          <div class="form-group">
-                            <label for="gender" >Gender</label><p style="display: contents; color: red;">*</p>
-                            <input id="gender" type="radio" name="gender" value="Male">Male
-                            <input id="gender" type="radio" name="gender" value="female">Female
+                            <label for="gender" >Gender :</label><p style="display: contents; color: red;"></p>
+                            <input id="gender" type="radio" name="gender" value="">Male
+                            <input id="gender" type="radio" name="gender" value="">Female
                             <span id="genderError" style="display: block; color: red;"></span>
                          </div>
                          <div class="form-group">
-                            <label for="dob">Date of Birth</label>
-                            <input type="text" id="textDate" name="date">
+                            <label for="dob">Date of Birth :</label><p style="display: contents; color: red;"></p>
+                            <input type="date" id="textDate" name="date">
                             <span id="dateError" style="display: block; color: red;"></span>
                           </div>
                           <div class="form-group">
-                            <label for="educationdetails">Highest Qualifications</label><p style="display: contents; color: red;">*</p>
-                            <input id="educationdetails" type="radio" name="education" value="Btech"> B.Tech
-                            <input id="educationdetails" type="radio" name="education" value="12th"> 12th
-                            <input id="educationdetails" type="radio" name="education" value="10th"> 10th
+                            <label for="educationdetails">Highest Qualifications :</label><p style="display: contents; color: red;"></p>
+                            <input id="educationdetails" type="radio" name="education" value=""> B.Tech
+                            <input id="educationdetails" type="radio" name="education" value=""> 12th
+                            <input id="educationdetails" type="radio" name="education" value=""> 10th
                             <span id="qualError" style="display: block; color: red;"></span>
                               
                          </div>
@@ -99,6 +99,13 @@
                e.preventDefault();
            }
            
+
+//           $(document).ready(function(){
+//                $("button").click(function(){
+//                   alert("Proceed to view the form");
+//                });
+//            });
+
              function passvalues(){
                  var firstname=document.getElementById("firstname").value;
                  var lastname=document.getElementById("lastname").value;
