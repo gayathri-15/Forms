@@ -113,6 +113,6 @@ function validateForm() {
 						   "Date Of Birth: " + date ;
          
         // Display input data in a dialog box before submitting the form
-        alert(dataPreview);
+        // alert(dataPreview);
     }
 };

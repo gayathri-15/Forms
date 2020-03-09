@@ -1,132 +1,174 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="css/style.css" rel="stylesheet"/>
-        
-    </head>
-    <body>
-        <div class="container-fluid">
-            <div class="container">
-                <h1>Registration form</h1>
-                <section>
-                    <div class="form-field" id="navigation">
-                        <form  name="applicationForm" onsubmit="return validateForm()" method="post">
-                          <div class="form-group name">
-                            <label for="firstname">First Name :</label><p style="display: contents; color: red;"></p>
-                            <input name="firstname" autocomplete="off" type="text" class="form-control" id="firstname">
-                            <span id="firstnameError" style="color: red"></span>
-                          </div>
-                          <div class="form-group name">
-                            <label for="lastname">Last Name :</label><p style="display: contents; color: red;"></p>
-                            <input name="lastname" autocomplete="off" type="text" class="form-control" id="lastname">
-                            <span id="lastnameError" style="color: red"></span>
-                          </div>
-                         <div class="form-group">
-                            <label for="gender" >Gender :</label><p style="display: contents; color: red;"></p>
-                            <input id="gender" type="radio" name="gender" value="">Male
-                            <input id="gender" type="radio" name="gender" value="">Female
-                            <span id="genderError" style="display: block; color: red;"></span>
-                         </div>
-                         <div class="form-group">
-                            <label for="dob">Date of Birth :</label><p style="display: contents; color: red;"></p>
-                            <input type="date" id="textDate" name="date">
-                            <span id="dateError" style="display: block; color: red;"></span>
-                          </div>
-                          <div class="form-group">
-                            <label for="educationdetails">Highest Qualifications :</label><p style="display: contents; color: red;"></p>
-                            <input id="educationdetails" type="radio" name="education" value=""> B.Tech
-                            <input id="educationdetails" type="radio" name="education" value=""> 12th
-                            <input id="educationdetails" type="radio" name="education" value=""> 10th
-                            <span id="qualError" style="display: block; color: red;"></span>
-                              
-                         </div>
-                         <div>
-                          <!-- <button type="submit" id="viewdetails" onclick="viewdetails()" class="btn btn-primary">view form</button> -->
-                             <button type="submit" id="viewdetails" onclick="passvalues()" class="btn btn-primary">view form</button>
-                            <input  class="btn btn-primary" type="submit" name="submit" value="Submit">
-                      </div>
-                        </form>
-                        
-                    </div>
-                </section>
-               
-                
-                   <nav id="formdata" class="hidden">
-                    <div class="form-field">
-                        <form method="post">
-                          <div class="form-group">
-                            <label for="first name">First name :</label><span id="fname"></span>  
-                          </div>
-                          <div class="form-group">
-                            <label for="first name">Last name :</label><span id="lname"></span>  
-                          </div>
-                          <div class="form-group">
-                            <label for="first name">Gender :</label><span id="gend"></span> 
-                          </div>
-                          <div class="form-group">
-                            <label for="first name">DOB :</label><span id="dob"></span>  
-                          </div>
-                          <div class="form-group">
-                            <label for="first name">Highest Qualification :</label><span id="education"></span>  
-                          </div>
-                        </form>
-                    </div>
-                  </nav> 
-                  
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="css/style.css" rel="stylesheet" />
+
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="container">
+      <h1>Registration form</h1>
+      <section>
+        <div class="form-field" id="navigation">
+          <form name="applicationForm" onsubmit="return validateForm()" method="dialog">
+            <div class="form-group name">
+              <label class="form-label" for="first-name">First name</label>
+              <input name="firstname" autocomplete="off" type="text" class="form-control" id="firstname" onchange="captureFname()"
+                data-bind="firstName" />
+              <span id="firstnameError" style="color: red"></span>
             </div>
+            <div class="form-group name">
+              <label class="form-label" for="second-name">Last name</label>
+              <input name="lastname" autocomplete="off" type="text" class="form-control" id="lastname"
+                data-bind="lastname" />
+              <span id="lastnameError" style="color: red"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Gender</label>
+              <input id="gender" type="radio" name="gender" value="Male" data-bind="gender" />
+              <label for="gender-male">Male</label>
+              <input id="gender" type="radio" name="gender" value="Female" data-bind="gender" />
+              <label for="gender-female">Female</label>
+              <span id="genderError" style="display: block; color: red;"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="date-of-birth">Date of birth</label>
+              <input id="textDate" type="date" name="date" data-bind="dateOfBirth" />
+              <span id="dateError" style="display: block; color: red;"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Highest Qualification</label>
+              <input id="educationdetails" type="radio" name="education" value="Btech" data-bind="education" />
+              <label for="education-btech">Btech</label>
+              <input id="educationdetails" type="radio" name="education" value="Btech" data-bind="education" />
+              <label for="education-inter">12th</label>
+              <input id="educationdetails" type="radio" name="education" value="10th" data-bind="education" />
+              <label for="education-school">10th</label>
+              <span id="qualError" style="display: block; color: red;"></span>
+
+            </div>
+            <div>
+              <button type="submit" id="viewdetails" onclick="passvalues()" class="btn btn-primary">view form</button>
+              <input class="btn btn-primary" type="submit" name="submit" value="Submit">
+            </div>
+          </form>
+
         </div>
-        
+      </section>
 
-        
-         <script>
-            (function(trigger, Viewdetails) {
-            function fn(event) {
-                if (event.target.id === trigger.id) {
-                    Viewdetails.classList.toggle('hidden'),
-                    document.getElementById("navigation").style.display = "none";
-                }
-            }
-            document.addEventListener('click', fn, false);
-            }
-            (document.querySelector('#viewdetails'), document.querySelector('#formdata'))
-            );
-           function viewform(e){
-               e.preventDefault();
-           }
-           
 
-//           $(document).ready(function(){
-//                $("button").click(function(){
-//                   alert("Proceed to view the form");
-//                });
-//            });
+      <nav id="formdata" class="hidden">
+        <div class="form-field">
+          <form method="dialog">
+            <div class="form-group">
+              <label for="first name">First name :</label><span  data-update="firstName"></span>
+            </div>
+            <div class="form-group">
+              <label for="first name">Last name :</label><span data-update="lastname"></span>
+            </div>
+            <div class="form-group">
+              <label for="first name">Gender :</label><span data-update="gender"></span>
+            </div>
+            <div class="form-group">
+              <label for="first name">DOB :</label><span data-update="dateOfBirth"></span>
+            </div>
+            <div class="form-group">
+              <label for="first name">Highest Qualification :</label><span data-update="education"></span>
+            </div>
 
-             function passvalues(){
-                 var firstname=document.getElementById("firstname").value;
-                 var lastname=document.getElementById("lastname").value;
-                 var gender=document.getElementById("gender").value;
-                 var textDate=document.getElementById("textDate").value;
-                 var educationdetails=document.getElementById("educationdetails").value;
-                     localStorage.setItem("firstvalue", firstname);
-                     localStorage.setItem("lastvalue", lastname);
-                     localStorage.setItem("gendvalue", gender);
-                     localStorage.setItem("dobvalue", textDate);
-                     localStorage.setItem("educationvalue", educationdetails);
-                    return false;
-                 
-            } 
-             document.getElementById("fname").innerHTML=localStorage.getItem("firstvalue");
-             document.getElementById("lname").innerHTML=localStorage.getItem("lastvalue");
-             document.getElementById("gend").innerHTML=localStorage.getItem("gendvalue");
-             document.getElementById("dob").innerHTML=localStorage.getItem("dobvalue");
-             document.getElementById("education").innerHTML=localStorage.getItem("educationvalue");
-        </script>
-   
-    <script src="js/validation.js"></script>
-    </body>
+          </form>
+        </div>
+        <a href="form.html">back to form</a>
+      </nav>
+
+    </div>
+  </div>
+
+
+
+
+  <script>
+    (function (trigger, Submit) {
+      function fn(event) {
+        if (event.target.id === trigger.id) {
+          Submit.classList.toggle('hidden'),
+            document.getElementById("navigation").style.display = "none";
+        }
+      }
+      document.addEventListener('click', fn, false);
+    }
+      (document.querySelector('#viewdetails'), document.querySelector('#formdata'))
+    );
+    function viewform(e) {
+      e.preventDefault();
+    }
+      
+    
+  </script>
+
+  
+
+  <script>
+    // Declare a global object to store view data.
+
+    
+    var viewData;
+
+    viewData = {};
+
+    $(function () {
+      // Update the viewData object with the current field keys and values.
+      function updateViewData(key, value) {
+        viewData[key] = value;
+      }
+
+      // Register all bindable elements
+      function detectBindableElements() {
+        var bindableEls;
+        bindableEls = $('[data-bind]');
+
+        // Add event handlers to update viewData and trigger callback event.
+        bindableEls.on('change', function () {
+          var $this;
+          $this = $(this);
+          updateViewData($this.data('bind'), $this.val());
+          $(document).trigger('updateDisplay');
+        });
+
+        // Add a reference to each bindable element in viewData.
+        bindableEls.each(function () {
+          updateViewData($(this));
+        });
+      }
+
+      // Trigger this event to manually update the list of bindable elements, useful when dynamically loading form fields.
+      $(document).on('updateBindableElements', detectBindableElements);
+      detectBindableElements();
+    });
+
+    $(function () {
+      // An example of how the viewData can be used by other functions.
+      function updateDisplay() {
+        var updateEls;
+        updateEls = $('[data-update]');
+        updateEls.each(function () {
+          $(this).html(viewData[$(this).data('update')]);
+        });
+      }
+
+      // Run updateDisplay on the callback.
+      $(document).on('updateDisplay', updateDisplay);
+    });
+  </script>
+
+  <script src="js/validation.js"></script>
+</body>
+
 </html>
